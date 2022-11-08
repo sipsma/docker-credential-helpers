@@ -65,7 +65,7 @@ func Get(program ProgramFunc, serverURL string) (*credentials.Credentials, error
 			err = isValidErr
 		}
 
-		return nil, fmt.Errorf("error getting credentials - err: %v, out: `%s`", err, t)
+		return nil, fmt.Errorf("error getting credentials - err: %v, prog: %s, out: `%s`", err, strings.Join(cmd.Args, " "), t)
 	}
 
 	resp := &credentials.Credentials{
