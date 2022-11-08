@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"github.com/docker/docker-credential-helpers/credentials"
+	exec "golang.org/x/sys/execabs"
 )
 
 // isValidCredsMessage checks if 'msg' contains invalid credentials error message.
@@ -65,7 +66,7 @@ func Get(program ProgramFunc, serverURL string) (*credentials.Credentials, error
 			err = isValidErr
 		}
 
-		return nil, fmt.Errorf("error getting credentials - err: %v, prog: %s, out: `%s`", err, strings.Join(cmd.Args, " "), t)
+		return nil, fmt.Errorf("error getting credentials - err: %v, prog: %s, out: `%s`", err, strings.Join(cmd.(*exec.Cmd).Args, " "), t)
 	}
 
 	resp := &credentials.Credentials{
