@@ -7,7 +7,6 @@ import (
 	"strings"
 
 	"github.com/docker/docker-credential-helpers/credentials"
-	exec "golang.org/x/sys/execabs"
 )
 
 // isValidCredsMessage checks if 'msg' contains invalid credentials error message.
